@@ -22,6 +22,33 @@ img {
 button:not(:disabled):active { padding-top: 0px; }
 button { color: black; }
 
+/* this is the new contact card that should create a new contact on the mobile device */
+    <button id="save-btn">Save Contact</button>
+                <script src="script.js"></script>
+                <script id="rendered-js">
+var saveBtn = document.getElementById("save-btn");
+saveBtn.addEventListener("click", function () {
+  // Get the contact information from the website
+  var contact = {
+    name: "Danielle Chaffin",
+    phone: "931-261-1874",
+    email: "dchaffin@revenova.com" };
+
+  // create a vcard file
+  var vcard = "BEGIN:VCARD\nVERSION:4.0\nFN:" + contact.name + "\nTEL;TYPE=work,voice:" + contact.phone + "\nEMAIL:" + contact.email + "\nEND:VCARD";
+  var blob = new Blob([vcard], { type: "text/vcard" });
+  var url = URL.createObjectURL(blob);
+
+  const newLink = document.createElement('a');
+  newLink.download = contact.name + ".vcf";
+  newLink.textContent = contact.name;
+  newLink.href = url;
+
+  newLink.click();
+});
+//# sourceURL=pen.js
+</script>
+
 /*** Menus ***/
 
 /* Menus are defined by a "ul" element with the "menu" class. Adding the
@@ -216,33 +243,6 @@ body {
         </div>
       </div>
     </div>
-
-// this is the new contact card that should create a new contact on the mobile device 
-    <button id="save-btn">Save Contact</button>
-                <script src="script.js"></script>
-                <script id="rendered-js">
-var saveBtn = document.getElementById("save-btn");
-saveBtn.addEventListener("click", function () {
-  // Get the contact information from the website
-  var contact = {
-    name: "Danielle Chaffin",
-    phone: "931-261-1874",
-    email: "dchaffin@revenova.com" };
-
-  // create a vcard file
-  var vcard = "BEGIN:VCARD\nVERSION:4.0\nFN:" + contact.name + "\nTEL;TYPE=work,voice:" + contact.phone + "\nEMAIL:" + contact.email + "\nEND:VCARD";
-  var blob = new Blob([vcard], { type: "text/vcard" });
-  var url = URL.createObjectURL(blob);
-
-  const newLink = document.createElement('a');
-  newLink.download = contact.name + ".vcf";
-  newLink.textContent = contact.name;
-  newLink.href = url;
-
-  newLink.click();
-});
-//# sourceURL=pen.js
-</script>
     
     <!-- Notepad -->
     <div id="notepad" class="toplevel window" style="position:absolute; display:none;">
@@ -329,7 +329,7 @@ saveBtn.addEventListener("click", function () {
             <li onclick="window.open('https://www.linkedin.com/in/maybedanielleee/')"><img src="images\LinkedInLogo.png">LinkedIn</li>
             <li onclick="window.open('https://www.instagram.com/maybedanielleee/');"><img src="images\InstagramLogo.png">Instagram</li>
             <li onclick="window.open('mailto:dchaffin@revenova.com')"><img src="https://win98icons.alexmeub.com/icons/png/outlook_express-0.png">dchaffin@revenova.com</li>
-            <li onclick="window.open('tel:9312611874')"><img src="https://win98icons.alexmeub.com/icons/png/modem-1.png">931-261-1874</li>
+            <li onclick="window.open('https://vcard.link/card/Ddva')"><img src="https://win98icons.alexmeub.com/icons/png/modem-1.png">931-261-1874</li>
 
             <hr>
             <li onclick="window.open('https://www.revenova.com')"><img src="images\RevAppImage.png">RevenovaTMS</li>
